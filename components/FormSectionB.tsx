@@ -5,9 +5,10 @@ import { useState } from 'react'
 type Props = {
   onNext: (data: any) => void
   onBack: () => void
+  t: any 
 }
 
-export default function FormSectionB({ onNext, onBack }: Props) {
+export default function FormSectionB({ onNext, onBack, t}: Props) {
   const [vehicleType, setVehicleType] = useState('')
   const [vehicleBrand, setVehicleBrand] = useState('')
   const [vehicleModel, setVehicleModel] = useState('')
@@ -27,9 +28,9 @@ export default function FormSectionB({ onNext, onBack }: Props) {
 
   return (
     <div style={{ padding: '20px', maxWidth: '500px', margin: '0 auto' }}>
-      <h2>Section B — Your Vehicle</h2>
+      <h2>{t.title}</h2>
 
-      <label>Vehicle Type</label>
+      <label>{t.vehicleType}</label>
       <select value={vehicleType} onChange={e => setVehicleType(e.target.value)} style={inputStyle}>
         <option value="">Select type</option>
         <option value="petrol">Petrol</option>
@@ -38,15 +39,15 @@ export default function FormSectionB({ onNext, onBack }: Props) {
         <option value="other">Other</option>
       </select>
 
-      <label>Vehicle Brand</label>
+      <label>{t.vehicleBrand}</label>
       <input value={vehicleBrand} onChange={e => setVehicleBrand(e.target.value)}
-        style={inputStyle} placeholder="e.g. Honda, TVS, Ola" />
+        style={inputStyle} placeholder={t.vehicleBrand} />
 
-      <label>Vehicle Model</label>
+      <label>{t.vehicleModel}</label>
       <input value={vehicleModel} onChange={e => setVehicleModel(e.target.value)}
-        style={inputStyle} placeholder="e.g. Activa, iQube" />
+        style={inputStyle} placeholder={t.vehicleModel} />
 
-      <label>Fueling / Charging Method</label>
+      <label>{t.fuelingMethod}</label>
       <select value={fuelingMethod} onChange={e => setFuelingMethod(e.target.value)} style={inputStyle}>
         <option value="">Select method</option>
         <option value="petrol_pump">Petrol Pump</option>
@@ -55,18 +56,18 @@ export default function FormSectionB({ onNext, onBack }: Props) {
         <option value="office_charging">Office / Hub Charging</option>
       </select>
 
-      <label>Weekly Fuel Spend (₹)</label>
+      <label>{t.weeklyFuel}</label>
       <input value={weeklyFuel} onChange={e => setWeeklyFuel(e.target.value)}
         style={inputStyle} placeholder="e.g. 500" type="number" />
 
-      <label>Monthly Maintenance Spend (₹)</label>
+      <label>{t.monthlyMaintenance}</label>
       <input value={monthlyMaintenance} onChange={e => setMonthlyMaintenance(e.target.value)}
         style={inputStyle} placeholder="e.g. 800" type="number" />
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      <button onClick={onBack} style={backButtonStyle}>← Back</button>
-      <button onClick={handleNext} style={buttonStyle}>Next →</button>
+      <button onClick={onBack} style={backButtonStyle}>← {t.back}</button>
+      <button onClick={handleNext} style={buttonStyle}>{t.next} →</button>
     </div>
   )
 }
