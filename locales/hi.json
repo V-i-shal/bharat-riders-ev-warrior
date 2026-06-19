@@ -1,0 +1,19 @@
+{
+  "title": "Road Warrior — Rider Registration",
+  "next": "आगे बढ़ें",
+  "back": "वापस",
+  "submit": "जमा करें",
+  "name": "पूरा नाम",
+  "phone": "WhatsApp नंबर",
+  "city": "शहर",
+  "platform": "डिलीवरी प्लेटफॉर्म",
+  "experience": "अनुभव (वर्षों में)",
+  "vehicleType": "वाहन का प्रकार",
+  "vehicleBrand": "वाहन का ब्रांड",
+  "vehicleModel": "वाहन का मॉडल",
+  "fuelingMethod": "ईंधन / चार्जिंग का तरीका",
+  "weeklyFuel": "साप्ताहिक ईंधन खर्च (₹)",
+  "monthlyMaintenance": "मासिक रखरखाव खर्च (₹)",
+  "openToEV": "क्या आप EV पर स्विच करना चाहते हैं?",
+  "referralCode": "रेफरल कोड (यदि हो)"
+}
