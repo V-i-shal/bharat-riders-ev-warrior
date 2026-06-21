@@ -1,6 +1,8 @@
-Road Warrior — Rider Data Collection System
+# 🛵 Road Warrior — Rider Data Collection System
 
-Built for Bharat Riders | 72-Hour Technical Challenge Submission
+### Bharat Riders 72-Hour Technical Challenge Submission
+
+A multilingual rider registration platform that collects delivery rider data, tags leads automatically, runs a referral and points program, and provides the business a live admin view of every signup.
 
 A multilingual rider registration platform that collects delivery rider data, tags leads automatically, runs a referral and points program, and gives the business a live admin view of every signup.
 
