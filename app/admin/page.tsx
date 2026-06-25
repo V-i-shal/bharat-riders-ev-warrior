@@ -29,6 +29,7 @@ export default function AdminPage() {
   const filteredRiders = data?.allRiders?.filter((r: any) => {
     if (filter === 'all') return true
     if (filter === 'insurance') return r.insurance_lead
+    if (filter === 'suspicious') return r.suspicious
     return r.lead_tag === filter
   })
 
@@ -90,8 +91,9 @@ export default function AdminPage() {
           <StatCard icon={<Zap size={20} color="#60a5fa" />} value={data.evRiders} label="EV Riders" />
           <StatCard icon={<RefreshCw size={20} color="#4ade80" />} value={data.swingRiders} label="Swing Riders" />
           <StatCard icon={<Shield size={20} color="#f87171" />} value={data.insuranceLeads} label="Insurance Leads" />
+          <StatCard icon={<Shield size={20} color="#f87171" />} value={data.suspiciousCount} label="⚠️ Suspicious" />
         </div>
-
+        
         {/* City Breakdown */}
         <Section title="📍 City Breakdown">
           {Object.entries(data.cityCount).map(([city, count]: any) => {
@@ -157,12 +159,12 @@ export default function AdminPage() {
         {/* All Riders Table */}
         <Section title="👥 All Riders">
           <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
-            {['all', 'petrol', 'ev', 'swing', 'insurance'].map(f => (
+            {['all', 'petrol', 'ev', 'swing', 'insurance','suspicious'].map(f => (
               <button key={f} onClick={() => setFilter(f)}
                 style={{ padding: '6px 14px', borderRadius: '20px', border: 'none', cursor: 'pointer',
                   backgroundColor: filter === f ? '#16a34a' : '#27272a',
                   color: filter === f ? 'white' : '#a1a1aa', fontSize: '13px' }}>
-                {f === 'insurance' ? '🚨 Insurance Leads' : f.charAt(0).toUpperCase() + f.slice(1)}
+                {f === 'insurance' ? '🚨 Insurance' : f === 'suspicious' ? '⚠️ Suspicious' : f.charAt(0).toUpperCase() + f.slice(1)}
               </button>
             ))}
           </div>
@@ -182,8 +184,15 @@ export default function AdminPage() {
               </thead>
               <tbody>
                 {filteredRiders?.map((rider: any) => (
-                  <tr key={rider.id} style={{ borderBottom: '1px solid #27272a' }}>
-                    <td style={tdStyle}>{rider.name}</td>
+                  <tr key={rider.id} style={{ borderBottom: '1px solid #27272a', backgroundColor: rider.suspicious ? '#1c0a0a' : 'transparent' }}>
+                    <td style={tdStyle}>
+                      {rider.name}
+                      {rider.suspicious && (
+                        <span style={{ marginLeft: '6px', backgroundColor: '#7f1d1d', color: '#fca5a5', padding: '2px 6px', borderRadius: '8px', fontSize: '11px' }}>
+                          ⚠️ Suspicious
+                        </span>
+                      )}
+                    </td>
                     <td style={tdStyle}>{rider.city}</td>
                     <td style={tdStyle}>{rider.delivery_platform}</td>
                     <td style={tdStyle}>{rider.vehicle_type}</td>
